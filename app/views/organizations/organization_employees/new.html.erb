@@ -1,0 +1,21 @@
+<h2>Invite Employee!</h2>
+
+<%= form_with scope: :organization_employee, url: organization_organization_employees_path(@organization), class: "" do |form| %>
+    <div class="">
+        <%= form.label :email %>
+        <%= form.text_field :email %>
+    </div>
+
+    <div class="">
+        <%= form.label :role %>
+        <div>
+            <% OrganizationEmployee.roles.each do |role, _value| %>
+                <div class="flex items-center gap-2">
+                    <%= form.radio_button :role, role %>
+                    <%= form.label :role, role.humanize, value: role %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+    <%= form.submit "Add Employee" %>
+<% end %>

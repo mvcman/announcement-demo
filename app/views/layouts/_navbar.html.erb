@@ -1,0 +1,32 @@
+<div class="w-56 h-full overflow-y-auto flex flex-col items-center bg-blue-500 pl-4 space-y-4 pt-8 text-white transition" data-controller="toggle" data-toggle-target="toggleDiv">
+    <span clas="h-8 flex text-white" data-action="click->toggle#toggleSidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </span>
+    <%= active_link_to organization_projects_path(@organization), class: "px-2 py-2 w-full font-medium hover:bg-white hover:text-blue-500 hover:rounded-l-full flex items-center hover_active_link space-x-4", class_active: "bg-white rounded-l-full text-blue-500 active_link" do %>
+        <div class="min-w-8 w-8 block text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M15 7h5.5L15 1.5zM8 0h8l6 6v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2M4 4v18h16v2H4a2 2 0 0 1-2-2V4z"/></svg>
+        </div>
+        <span class="block">Projects</span>
+    <% end %>
+
+    <%= active_link_to organization_organization_employees_path(@organization), class_active: "bg-white rounded-l-full text-blue-500 active_link", class: "px-2 py-2 w-full font-medium hover:bg-white hover:text-blue-500 hover:rounded-l-full flex items-center hover_active_link space-x-4" do %>
+        <div class="min-w-8 w-8 block text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        </div>
+        <span class="block">Employees</span>
+    <% end %>
+
+    <%= active_link_to organization_departments_path(@organization), class_active: "bg-white rounded-l-full text-blue-500 active_link", class: "px-2 py-2 w-full font-medium hover:bg-white hover:text-blue-500 hover:rounded-l-full flex items-center hover_active_link space-x-4" do %>
+        <div class="min-w-8 w-8 block text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9A3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42c-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3a3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3a3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9c-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65c2.56.34 4.45 1.51 4.45 2.9z"/></svg>
+        </div>
+        <span class="block">Departments</span>
+    <% end %>
+
+     <%= active_link_to organization_announcements_path(@organization), class_active: "bg-white rounded-l-full text-blue-500 active_link", class: "px-2 py-2 w-full font-medium hover:bg-white hover:text-blue-500 hover:rounded-l-full flex items-center hover_active_link space-x-4" do %>
+        <div class="min-w-8 w-8 block text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 8H4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h1v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h3l5 4V4zm9.5 4c0 1.71-.96 3.26-2.5 4V8c1.53.75 2.5 2.3 2.5 4"/></svg>
+        </div>
+        <span class="block">Announcements</span>
+     <% end %>
+</div>

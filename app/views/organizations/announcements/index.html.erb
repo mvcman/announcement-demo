@@ -1,0 +1,11 @@
+<div class="w-full h-full overflow-y-auto flex flex-col space-y-4">
+    <div class="flex items-center justify-between">
+        <h2>Announcements</h2>
+        <%= link_to "Create New", new_organization_announcement_path(@organization), class: "btn-primary" %>
+    </div>
+    <div class="flex flex-col space-y-4">
+        <% @announcements.each do |announcement| %>
+            <%= render announcement %>
+        <% end %>
+    </div>
+</div>

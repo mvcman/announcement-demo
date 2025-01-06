@@ -1,0 +1,18 @@
+<div class="w-full h-full flex flex-col items-center justify-center">
+    <h1>Login form</h1>
+
+    <%= form_with scope: :session, url: session_path, class: "flex flex-col shadow p-4 mt-4 rounded-md border space-y-4" do |form| %>
+        <div class="flex flex-col">
+            <%= form.label :email, class: "block" %>
+            <%= form.text_field :email, placeholder: "Email", class: "border rounded-md p-2 text-gray-700 text-base" %>
+        </div>
+
+        <div class="flex flex-col">
+            <%= form.label :password, class: "block" %>
+            <%= form.text_field :password, placeholder: "Password", class: "border rounded-md p-2 text-gray-700 text-base" %>
+        </div>
+
+        <%= form.submit "Sign Up", class: "w-full p-2 px-4 text-center text-medium text-white bg-blue-500 rounded-md" %>
+    <% end %>
+    <%= link_to "Forgot password?", new_password_reset_path %>
+</div>

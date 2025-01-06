@@ -1,0 +1,8 @@
+<nav class="min-h-12 h-12 w-full px-4 border flex items-center justify-between">
+    <ul class="h-full flex items-center space-x-4">
+        <li><%= link_to "Dashboard", dashboard_path %></li>
+        <li><%= button_to "Sign Out", session_path, method: :delete %></li>
+        <li><%= link_to "My Profile", user_path(Current.user) %></li>
+    </ul>
+    <%= link_to "Add Organization", new_organization_path, class: "btn-primary" %>
+</nav>

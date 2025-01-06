@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+  <head>
+    <%= render "layouts/head" %>
+  </head>
+<html>
+  <body>
+    <header class="shadow fixed top-0 right-0 left-0 h-12">
+      <nav class="w-full h-full px-4">
+        <ul class="w-full h-full flex items-center space-x-4">
+            <li><%= link_to "Home", root_path %></li>
+            <li><%= link_to "Sign Up", new_registration_path %></li>
+            <li><%= link_to "Sign In", new_session_path %></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="mt-12 p-4">
+      <%= notice %>
+      <%= yield %>
+    </main>
+  </body>
+</html>

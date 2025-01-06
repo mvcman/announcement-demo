@@ -1,0 +1,46 @@
+<%= form_with model: [organization, announcement], data: { controller: "announcement", recipient_ids: announcement.announcement_recipients.pluck(:announceable_id) }, class: "p-4 flex flex-col space-y-4" do |form| %>
+    <div class="">
+        <%= form.label :title, class: "block" %>
+        <%= form.text_field :title, class: "" %>
+    </div>
+    <div class="">
+        <%= form.label :content, class: "block" %>
+        <%= form.text_field :content, class: "" %>
+    </div>
+    <div class="flex space-x-4">
+        <div class="">
+            <%= form.label :severity, class: "block" %>
+            <%= form.select :severity, options_for_select(Announcement.severities.keys.map {|k| [k.capitalize, k]}), class: "" %>
+        </div>
+        <div class="">
+            <%= form.label :recipient_type, class: "block" %>
+            <%= form.select :recipient_type, options_for_select(["Department", "User", "Organization"], selected: announcement.recipient_type), {}, data: { announcement_target: "recipient", action: "change->announcement#toggleFields" }, class: "" %>
+        </div>
+    </div>
+    <div class="flex flex-col hidden" data-announcement-target="toggleable" data-id="department">
+        <%= form.label :department_id, "Select Department" %>
+        <% @departments.each do |department| %>
+            <label>
+                <%= check_box_tag "announceable_ids[]", department.id, class: "checkbox" %>
+                <%= department.name %>
+            </label>
+        <% end %>
+    </div>
+    <div class="flex flex-col hidden" data-announcement-target="toggleable" data-id="user">
+        <%= form.label :user_id, "Select Employee" %>
+        <% @users.each do |user| %>
+            <label>
+                <%= check_box_tag "announceable_ids[]", user.id, class: "checkbox" %>
+                <%= user&.profile.present? ? user&.profile&.full_name : user.email %>
+            </label>
+        <% end %>
+    </div>
+    <div class="flex flex-col hidden" data-announcement-target="toggleable" data-id="organization">
+        <%= form.label :organization_id, "Select Organization" %>
+        <label>
+            <%= check_box_tag "announceable_ids[]", @organization.id, class: "checkbox" %>
+            <%= @organization.name %>
+        </label>
+    </div>
+    <%= form.submit "Save", class: "btn-primary self-start" %>
+<% end %>

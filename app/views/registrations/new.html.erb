@@ -1,0 +1,19 @@
+<div class="w-full h-full flex flex-col items-center justify-center">
+    <h1>Sign Up form</h1>
+
+    <%= form_with model: @user, url: registration_path, class: "flex flex-col shadow p-4 mt-4 rounded-md border space-y-4" do |form| %>
+        <%= tag.div(@user.errors.full_messages.to_sentence) if @user.errors.any? %>
+
+        <div class="flex flex-col">
+            <%= form.label :email, class: "block" %>
+            <%= form.text_field :email, placeholder: "Email", class: "border rounded-md p-2 text-gray-700 text-base" %>
+        </div>
+
+        <div class="flex flex-col">
+            <%= form.label :password, class: "block" %>
+            <%= form.text_field :password, placeholder: "Password", class: "border rounded-md p-2 text-gray-700 text-base" %>
+        </div>
+
+        <%= form.submit "Sign Up", class: "w-full p-2 px-4 text-center text-medium text-white bg-blue-500 rounded-md" %>
+    <% end %>
+</div>

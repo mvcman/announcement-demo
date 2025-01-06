@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-primary {
+    @apply bg-blue-500 text-white rounded-md text-base px-2 py-1;
+  }
+  .active {
+    @apply bg-green-500;
+  }
+  .active_link {
+    @apply before:absolute before:h-8 before:w-8 relative before:right-0 before:-top-8 before:bg-transparent before:rounded-full after:absolute after:h-8 after:w-8 after:right-0 after:-bottom-8 after:bg-transparent after:rounded-full before:shadow-top after:shadow-bottom;
+  }
+  .hover_active_link {
+    @apply hover:before:absolute hover:before:h-8 hover:before:w-8 hover:relative hover:before:right-0 hover:before:-top-8 hover:before:bg-transparent hover:before:rounded-full hover:after:absolute hover:after:h-8 hover:after:w-8 hover:after:right-0 hover:after:-bottom-8 hover:after:bg-transparent hover:after:rounded-full hover:before:shadow-top hover:after:shadow-bottom;
+  }
+}

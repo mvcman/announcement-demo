@@ -1,0 +1,43 @@
+<div class="w-full flex flex-col space-y-4">
+    <div class="flex flex-col space-y-2">
+        <h2>Update Profile</h2>
+        <%= form_with scope: :profile, url: user_path(@user), method: :patch, class: "w-1/2 flex flex-col space-y-4"  do |form| %>
+            <div class="">
+                <%= form.label :first_name, class: "block" %>
+                <%= form.text_field :first_name, class: "w-full p-2 border text-base text-gray-600 rounded-md" %>
+            </div>
+            <div class="">
+                <%= form.label :middle_name, class: "block" %>
+                <%= form.text_field :middle_name, class: "w-full p-2 border text-base text-gray-600 rounded-md" %>
+            </div>
+            <div class="">
+                <%= form.label :last_name, class: "block" %>
+                <%= form.text_field :last_name, class: "w-full p-2 border text-base text-gray-600 rounded-md" %>
+            </div>
+            <div class="">
+                <%= form.label :address, class: "block" %>
+                <%= form.text_field :address, class: "w-full p-2 border text-base text-gray-600 rounded-md" %>
+            </div>
+            <div class="">
+                <%= form.label :state, class: "block" %>
+                <%= form.text_field :state, class: "w-full p-2 border text-base text-gray-600 rounded-md" %>
+            </div>
+            <div class="">
+                <%= form.label :city, class: "block" %>
+                <%= form.text_field :city, class: "w-full p-2 border text-base text-gray-600 rounded-md" %>
+            </div>
+            <div class="">
+                <%= form.label :country, class: "block" %>
+                <%= form.text_field :country, class: "w-full p-2 border text-base text-gray-600 rounded-md" %>
+            </div>
+            <div class="">
+                <%= form.label :pin_code, class: "block" %>
+                <%= form.text_field :pin_code, class: "w-full p-2 border text-base text-gray-600 rounded-md" %>
+            </div>
+            <div class="">
+                <%= form.file_field :image %>
+            </div>
+            <%= form.submit "Save", class: "bg-blue-500 p-2 text-white text-medium rounded-md" %>
+        <% end %>
+    </div>
+</div>

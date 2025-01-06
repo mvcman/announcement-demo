@@ -1,0 +1,7 @@
+<%= form_with model: [organization, department], class: "p-4 flex flex-col space-y-4" do |form| %>
+    <div class="">
+        <%= form.label :name, class: "block" %>
+        <%= form.text_field :name, class: "" %>
+    </div>
+    <%= form.submit "Save", class: "btn-primary self-start" %>
+<% end %>

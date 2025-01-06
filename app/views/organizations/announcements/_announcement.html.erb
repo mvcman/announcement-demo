@@ -1,0 +1,6 @@
+<div class="p-4 shadow border rounded-md flex flex-col">
+    <p>Title:- <%= announcement.title %></p>
+    <p>Content:- <%= announcement.content %></p>
+    <p>Recipient Type:- <%= announcement.recipient_type %></p>
+    <%= link_to "Edit", edit_organization_announcement_path(@organization, announcement), class: "" %>
+</div>

@@ -1,0 +1,10 @@
+<%= form_with model: organization, class: "flex flex-col space-y-4" do |form| %>
+    <div class="">
+        <%= form.label :name, class: "block" %>
+        <%= form.text_field :name, class: "w-full p-2 border text-base text-gray-600 rounded-md" %>
+    </div>
+    <div class="">
+        <%= form.file_field :logo %>
+    </div>
+    <%= form.submit "Save", class: "bg-blue-500 py-2 px-4 text-white text-medium rounded-md self-start" %>
+<% end %>

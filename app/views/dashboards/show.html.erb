@@ -1,0 +1,16 @@
+<h1>Welcome, <%= Current.user.email %> Private Dashboard</h1>
+<p>
+  This page should only be accessible to authenticated users.
+</p>
+
+
+
+<% unless current_user.organizations.count == 0 %>
+  <h2>My Organizations</h2>
+<% end %>
+
+<% current_user.organizations.each do |org| %>
+  <%= link_to organization_path(org), class: "flex items-center p-4 shadow my-2 rounded-md border" do %>
+    <p><%= org.name %></p>
+  <% end %>
+<% end %>
