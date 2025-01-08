@@ -12,6 +12,9 @@ class User < ApplicationRecord
     has_many :department_employees, dependent: :destroy
     has_many :departments, through: :department_employees
 
+    has_many :approval_requests, dependent: :destroy 
+    has_many :approvals, dependent: :destroy
+
     # after_create :create_default_profile
     MINIMUM_PASSWORD_LENGTH = 8
     has_secure_password

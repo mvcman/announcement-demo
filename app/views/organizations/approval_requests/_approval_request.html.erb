@@ -1,0 +1,18 @@
+<div class="p-4 border rounded-md flex flex-col space-y-2 bg-gray-50 shadow">
+    <% if approval_request.requester == current_user %>
+        <div class="flex space-x-2 items-center">
+            <p>You have requested for <%= approval_request.title %></p>
+            <span class="rounded-md p-1 text-sm font-medium text-gray-50 <%= approval_request.request_status %>"><%= approval_request.request_status %></span>
+        </div>
+    <% else %>
+        <div class="flex space-x-2 items-center">
+            <%= render partial: "users/user", locals: { user: approval_request.requester } %>
+            <p>has added request for <%= approval_request.title %></p>
+            <span class="rounded-md p-1 text-sm font-medium text-gray-50 <%= approval_request.request_status %>"><%= approval_request.request_status %></span>
+        </div>
+    <% end %>
+    <p class="text-gray-500 text-base"><%= approval_request.description %></p>
+    <div class="flex justify-end space-x-2">
+        <%= link_to "Show", organization_approval_request_path(@organization, approval_request), class: "btn-primary" %>
+    </div>
+</div>

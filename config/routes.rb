@@ -14,12 +14,20 @@ Rails.application.routes.draw do
   resources :organizations, except: :index do 
     resources :projects, module: :organizations
     resources :announcements, module: :organizations
+    resources :approval_requests, module: :organizations do
+      collection do 
+        patch "update_approval_request"
+      end 
+    end
     resources :departments, module: :organizations do 
       collection do 
         patch "update_department_user"
       end
     end
     resources :organization_employees, module: :organizations, except: :show
+    collection do 
+      patch "update_approval_setting"
+    end
   end
 
   resource :dashboard, only: :show

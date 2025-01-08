@@ -9,10 +9,30 @@
   .active {
     @apply bg-green-500;
   }
+
+  .text-field {
+    @apply rounded-md border p-2
+  }
   .active_link {
     @apply before:absolute before:h-8 before:w-8 relative before:right-0 before:-top-8 before:bg-transparent before:rounded-full after:absolute after:h-8 after:w-8 after:right-0 after:-bottom-8 after:bg-transparent after:rounded-full before:shadow-top after:shadow-bottom;
   }
   .hover_active_link {
     @apply hover:before:absolute hover:before:h-8 hover:before:w-8 hover:relative hover:before:right-0 hover:before:-top-8 hover:before:bg-transparent hover:before:rounded-full hover:after:absolute hover:after:h-8 hover:after:w-8 hover:after:right-0 hover:after:-bottom-8 hover:after:bg-transparent hover:after:rounded-full hover:before:shadow-top hover:after:shadow-bottom;
+  }
+
+  .pending {
+    @apply bg-yellow-500;
+  }
+
+  .denied {
+    @apply bg-red-500;
+  }
+
+  .in_progress {
+    @apply bg-blue-500;
+  }
+
+  .approved {
+    @apply bg-green-500;
   }
 }

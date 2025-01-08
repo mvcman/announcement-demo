@@ -11,7 +11,7 @@
             <% if @current_membership.present? %>
                 <%= render "layouts/navbar" %>
             <% end %>
-            <div class="w-full h-full pverflow-y-auto flex-1 p-4">
+            <div class="w-full h-full overflow-y-auto flex-1 p-4">
                 <%= notice %>
                 <%= yield %>
             </div>

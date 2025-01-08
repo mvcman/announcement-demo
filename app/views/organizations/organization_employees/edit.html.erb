@@ -1,0 +1,16 @@
+<h2>Edit Employee!</h2>
+
+<%= form_with scope: :organization_employee, url: organization_organization_employee_path(@organization, @organization_employee), method: :patch, class: "" do |form| %>
+    <div class="">
+        <%= form.label :role %>
+        <div>
+            <% OrganizationEmployee.roles.each do |role, _value| %>
+                <div class="flex items-center gap-2">
+                    <%= form.radio_button :role, role %>
+                    <%= form.label :role, role.humanize, value: role %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+    <%= form.submit "Update Employee", class: "btn-primary self-start" %>
+<% end %>

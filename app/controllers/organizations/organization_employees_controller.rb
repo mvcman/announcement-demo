@@ -20,12 +20,22 @@ class Organizations::OrganizationEmployeesController < Organizations::BaseContro
     end 
 
     def update 
+        if @organization_employee.update(org_emp_params)
+            redirect_to organization_organization_employees_path(@organization), notice: "Role updated successfully!"
+        else 
+            flash.now[:alert] = "Failed to update user role!"
+            render :edit, status: :unprocessable_entity
+        end
     end 
 
     def destroy 
     end 
 
     private 
+
+    def org_emp_params 
+        params.require(:organization_employee).permit(:role)
+    end
 
     def set_organization_employee
         @organization_employee = @organization.organization_employees.find(params[:id])

@@ -17,6 +17,7 @@ class OrganizationsController < MainController
     end 
 
     def show 
+        @approval_setting = @organization.approval_settings.first || @organization.approval_settings.create(require_approvals: 2)
     end 
 
     def edit 
@@ -36,6 +37,16 @@ class OrganizationsController < MainController
             redirect_to dashboard_path 
         else 
             redirect_to organization_path(@organization) 
+        end
+    end
+
+    def update_approval_setting 
+        organization = Organization.find(params[:organization_id])
+        @approval_setting = ApprovalSetting.find_by(organization_id: params[:organization_id])
+        if @approval_setting.update(require_approvals: params[:require_approvals])
+            redirect_to organization_path(organization), notice: "setting updated successfully!"
+        else 
+            redirect_to organization_path(organization), alert: "Failed to update settings!"
         end
     end
 

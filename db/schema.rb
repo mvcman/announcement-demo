@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_01_04_055612) do
+ActiveRecord::Schema[7.1].define(version: 2025_01_06_151557) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -64,6 +64,37 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_04_055612) do
     t.datetime "updated_at", null: false
     t.index ["organization_id"], name: "index_announcements_on_organization_id"
     t.index ["user_id"], name: "index_announcements_on_user_id"
+  end
+
+  create_table "approval_requests", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.uuid "user_id", null: false
+    t.uuid "organization_id", null: false
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_approval_requests_on_organization_id"
+    t.index ["user_id"], name: "index_approval_requests_on_user_id"
+  end
+
+  create_table "approval_settings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "organization_id", null: false
+    t.integer "require_approvals"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_approval_settings_on_organization_id"
+  end
+
+  create_table "approvals", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "approval_request_id", null: false
+    t.uuid "user_id", null: false
+    t.text "comment"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["approval_request_id"], name: "index_approvals_on_approval_request_id"
+    t.index ["user_id"], name: "index_approvals_on_user_id"
   end
 
   create_table "department_employees", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -151,6 +182,11 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_04_055612) do
   add_foreign_key "announcement_recipients", "announcements"
   add_foreign_key "announcements", "organizations"
   add_foreign_key "announcements", "users"
+  add_foreign_key "approval_requests", "organizations"
+  add_foreign_key "approval_requests", "users"
+  add_foreign_key "approval_settings", "organizations"
+  add_foreign_key "approvals", "approval_requests"
+  add_foreign_key "approvals", "users"
   add_foreign_key "department_employees", "departments"
   add_foreign_key "department_employees", "users"
   add_foreign_key "departments", "organizations"

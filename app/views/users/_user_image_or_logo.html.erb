@@ -1,0 +1,5 @@
+<% if user&.profile&.image.attached? %>
+    <%= image_tag url_for(user&.profile.image), class: "w-8 h-8 rounded-full border" %>
+<% else %>
+    <span class="uppercase w-8 h-8 rounded-full flex items-center justify-center bg-white text-gray-600 text-sm font-medium border"><%= user&.profile&.full_name&.slice(0,2)%></span>
+<% end %>

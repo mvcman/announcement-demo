@@ -5,5 +5,4 @@ class Department < ApplicationRecord
   has_many :users, through: :department_employees
 
   has_many :announcement_recipients, as: :announceable, dependent: :destroy
-
 end
